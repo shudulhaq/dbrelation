@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Mahasiswa;
 import com.example.demo.repository.MahasiswaRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,14 +20,16 @@ public class MahasiswaController {
     @Autowired
     private MahasiswaRepository mahasiswa;
 
-    @GetMapping("/getAllMahasiswa")
+    @ApiOperation("Api for get All Mahasiswa")
+    @GetMapping("/list")
     public ResponseEntity<List<Mahasiswa>>getAllMahasiswa(){
         List<Mahasiswa>result = mahasiswa.findAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 
-    @GetMapping("/getAllMahasiswa")
+    @ApiOperation("Api for get Pagination Mahasiswa")
+    @GetMapping("/data")
     public ResponseEntity<Object>getAllMahasiswa(@RequestParam int page, @RequestParam int size){
         Pageable request = PageRequest.of(page, size);
 
