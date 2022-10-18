@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
@@ -21,4 +22,9 @@ public class Mahasiswa {
 
     @OneToMany(mappedBy = "mahasiswa")
     private List<Matakuliah> listMatakuliah;
+
+    @ManyToOne
+    @JoinColumn(name = "id_dosen")
+    @JsonBackReference
+    private Dosen pakDosen;
 }

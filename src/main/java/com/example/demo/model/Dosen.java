@@ -21,4 +21,7 @@ public class Dosen {
 
     @OneToMany(mappedBy = "pakDosen")
     private List<Matakuliah> listMatakuliah;
+
+    @OneToMany(mappedBy = "pakDosen")
+    private List<Mahasiswa> listMahasiswa;
 }
